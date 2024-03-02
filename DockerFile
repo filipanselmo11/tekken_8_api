@@ -1,0 +1,13 @@
+FROM python:3.10-slim-buster
+
+WORKDIR /tekken-app
+
+COPY requirements.txt /tekken-app/
+
+RUN pip install -r requirements.txt
+
+COPY . /tekken-app
+
+RUN chmod +x entrypoint.sh
+
+ENTRYPOINT [ "sh", 'entrypoint.sh' ]

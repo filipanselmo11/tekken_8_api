@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  postgresdb:
+   image: postgres:latest
+   restart: always
+   container_name: pg_container
+   command: postgres -c 'max_connections=100'
+   environment:
+    POSTGRES_DB: db_name
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: postgres
+   volumes:
+    - postgres_db:/var/lib/postgresql/data
+   env_file:
+    - .env
+  server:
+   build: .
+   restart: always
+   container_name: django_tekken_container
+   depends_on:
+    - postgres
+   environment:
+    - DATABASE_URL=postgres://postgres@postgresdb:5432/db_name
+   volumes:
+    - ./:/tekken-app
+   ports:
+    - '8000:8000'
+volumes:
+ postgres_db:
