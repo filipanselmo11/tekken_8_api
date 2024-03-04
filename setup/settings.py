@@ -17,7 +17,7 @@ SECRET_KEY = 'django-insecure-ouhfmf*hjcpn9l3+p4dj))8p#y%hp39mnd!dwvmq51$v1jdsta
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -127,9 +127,9 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10
 }
-#CORS_ALLOWED_ALL = True -- Outra forma de configuração do CORS
+CORS_ALLOWED_ALL = True
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:8080',
-    'http://127.0.0.1:9000',
-]
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:8080',
+#     'http://127.0.0.1:9000',
+#]
